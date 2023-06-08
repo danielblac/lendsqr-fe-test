@@ -192,7 +192,8 @@ body {
                 width: 17em;
             } 
             .input {
-                display: flex;
+                display: grid;
+                grid-template-columns: repeat(20, minmax(0, 1fr));
                 justify-content: space-between;
                 align-items: end;
                 padding: 0.3em;
@@ -202,6 +203,7 @@ body {
                 background-color: $background-primary;
                 input {
                     width: 100%;
+                    grid-column: span 19 / span 19;
                     max-height: 3em;
                     outline: none;
                     border: none;
