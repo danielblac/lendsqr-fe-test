@@ -16,7 +16,7 @@ export default function NotFound() {
       <h1 className='font-bold text-2xl pb-3'>Ooooooops....</h1>
       <h2 className='pb-3 text-xl'>That page cannot be found</h2>
       <p>
-        Go back to <Link className='text-btn underline' href='/'>Home</Link>
+        Go back to <Link className='text-btn underline' href='/users'>Users</Link>
       </p>
     </div>
   )
