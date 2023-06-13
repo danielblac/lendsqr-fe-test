@@ -19,7 +19,6 @@ export default function Home() {
         <div className='lendsqr'>
           <div className='lendsqr-logo'>
             <Image 
-              className='logo'
               src="/images/logo.png"
               alt='lendsqr-logo'
               width={24.7}
@@ -33,7 +32,7 @@ export default function Home() {
             <h1>Welcome!</h1>
             <p>Enter details to login.</p>
             <div className='login-form'>
-              <div className='input email'>
+              <div className='input'>
                 <input 
                   type="email"
                   placeholder='Email' 
@@ -42,7 +41,7 @@ export default function Home() {
                   required         
                 />              
               </div>
-              <div className='input password'>
+              <div className='input'>
                 <input 
                   type={visible ? 'text' : 'password'}
                   placeholder='Password' 

@@ -2,11 +2,14 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { FaSearch, FaRegBell, FaCaretDown, FaSignOutAlt, FaUser, FaCogs } from 'react-icons/fa'
+import { HiBellAlert } from 'react-icons/hi2'
 
 export default function UserHeader() {
   // const [search, setSearch] = useState<string>('')
   const [isOpen, setIsOpen] = useState(false)
+  const [isAlert, setIsAlert] = useState(false)
   const toggleMenu = () => setIsOpen(!isOpen)
+  const toggleBell = () => setIsAlert(!isAlert)
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -42,7 +45,9 @@ export default function UserHeader() {
       </div>
       <div className="profile">
         <Link href='' className="docs">Docs</Link>
-        <div className="bell"><FaRegBell /></div>
+        <div className="bell" onClick={toggleBell}>
+          {isAlert ? <HiBellAlert /> : <FaRegBell />}
+        </div>
         <div className="profile-details">
           <Image 
             className='profile-photo'

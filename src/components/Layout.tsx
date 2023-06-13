@@ -6,10 +6,12 @@ type LayoutProps = {children?: ReactNode}
 
 export default function Layout({children}: LayoutProps) {
   return (
-    <div>
+    <div className="users-layout">
       <UserHeader />
-      <UserSidebar />
-        {children}
+      <div className="main">
+        <UserSidebar />
+          {children}
+      </div>
     </div>
   )
 }

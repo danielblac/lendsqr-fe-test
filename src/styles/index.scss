@@ -1,9 +1,14 @@
 // COLORS
 $color-header: #213F7D;
 $color-body: #545F7D;
-$color-secondary : #39CDCC;
+$color-active: #05122b;
+$color-body-faded: hsla(224, 20%, 41%, 0.3);
 
 $background-primary: #FFF;
+$background-user-page: #E5E5E5;
+$background-active: #39cdcd33;
+$background-secondary: #39CDCC;
+$background-scroll: #213f7d1a;
 
 //  FONTS
 @font-face {
@@ -215,13 +220,13 @@ body {
                 }
                 .eye {
                     font-size: 1.25rem;
-                    color: $color-secondary;                   
+                    color: $background-secondary;                   
                 }
             }
             .forget-password {
                 font-size: 0.65rem;
                 font-weight: 600;
-                color: $color-secondary;
+                color: $background-secondary;
                 letter-spacing: 0.1em;
                 padding-bottom: 0.4em;                
                 cursor: pointer;
@@ -238,7 +243,7 @@ body {
                 font-size: 0.8rem;
                 font-weight: 600;
                 letter-spacing: 0.1em;
-                background-color: $color-secondary;
+                background-color: $background-secondary;
                 color: $background-primary;
                 border: none;
                 border-radius: 5px;
@@ -248,9 +253,32 @@ body {
     }
 }
 
+// ACTIVE LINK
+
+.active-link {
+    background-color: $background-active;
+    color: $color-active;
+    border-left: 4px solid $background-secondary;
+}
+
+.active-page {
+    color: $color-active;
+}
+
+// DASHBOARD/GENERAL DETAILS LAYOUT
+
+.users-layout {    
+    background-color: $background-user-page;
+    .main {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}
+
 // DASHBOARD/GENERAL DETAILS HEADER
 
 .header {
+    background-color: $background-primary;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     padding: 1em 1.875em;
@@ -259,6 +287,9 @@ body {
         display: flex;
         align-items: center;
         gap: 0.5em;
+        @include respond(laptop) {
+            padding-left: 1.5em;
+        }
         img {
             width: 1em;
             height: 1.1em;
@@ -289,7 +320,7 @@ body {
             }
             button {
                 padding: 0.6em 1.35em;
-                background-color: $color-secondary;
+                background-color: $background-secondary;
                 color: $background-primary;
                 border: none;
                 cursor: pointer;
@@ -306,6 +337,7 @@ body {
         }
         .bell {
             font-size: 1.25rem;
+            cursor: pointer;
         }
         .profile-details {
             display: flex;
@@ -338,7 +370,7 @@ body {
                     display: none;
                     flex-direction: column;
                     top: 3.1em;
-                    background-color: $color-secondary;
+                    background-color: $background-secondary;
                     color: $background-primary;
                     padding: 0.4em 0.2em;
                     border-radius: 5px;
@@ -354,6 +386,245 @@ body {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+// DASHBOARD/GENERAL DETAILS SIDEBAR
+
+.side-bar {
+    grid-column: span 1 / span 1;
+    background-color: $background-primary;
+    width: 100%;
+    padding: 2.25em 0 1.5em;
+    .switch {
+        display: flex;
+        gap: 0.6em;
+        padding: 0 0em 3em 1.8em;
+        .down-arrow {
+            padding-top: 0.15em;
+            cursor: pointer;
+        }  
+    }
+    .dashboard {
+        opacity: 0.6;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6em;
+        padding-left: 1.85em;
+        padding-bottom: 2.5em;
+    }
+    .products {
+        padding-bottom: 2.5em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        &:last-child {
+            padding-bottom: 0;
+        }
+        .product-header {
+            font-size: 0.75rem;
+            padding-left: 2.5em;
+        }
+        a {
+            opacity: 0.6;
+            padding: 0.6em 3em 0.6em 1.8em;
+            p {
+                display: flex;
+                align-items: flex-start;
+                gap: 0.6em;
+            }
+        }
+    }
+}
+
+// USERS PAGE
+
+.users-page {
+    background-color: $background-user-page;
+    grid-column: span 4 / span 4;
+    padding: 3.75em;
+    .users-general-container {
+        padding: 2.5em 0;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 2em;
+        .users-general {
+            padding: 1.25em;
+            background-color: $background-primary;
+            .users-general-icon {
+                width: 2.5em;
+                height: 2.5em;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 0.9em;
+            }
+            .first {
+                color: #DF18FF;
+                background-color: #e018ff33;
+            }
+            .second {
+                color: #5718FF;
+                background-color: #571aff33;
+            }
+            .third {
+                color: #F55F44;
+                background-color: #f55d4240
+            }
+            .fourth {
+                color: #FF3366;
+                background-color: #ff336633;
+            }
+            .users-p {
+                font-size: 0.8rem;
+                margin-bottom: 0.75em;
+                letter-spacing: 0.025em;
+            }
+            .users-number {
+                font-size: 1rem;
+                font-weight: bold;
+            }
+        }
+    }
+    .users-details-container {
+        background-color: $background-primary;
+        padding: 1.8em 0 1.8em 1.8em;
+        .users-details-head {
+            display: grid;
+            grid-template-columns: 8em 7.1em 13.2em 8.4em 9.7em auto;
+            padding-bottom: 1em;
+            p {
+                font-size: 0.72rem;
+                font-weight: bold;
+            }
+            .users-details-header {
+                display: flex;
+                align-items: center;
+                gap: 0.4em;
+                .filter {
+                    cursor: pointer;
+                    font-size: 0.85rem;
+                }
+            }
+        }
+        .user-details {
+            display: grid;
+            grid-template-columns: 10.2em 8.8em 16.5em 10.5em 12em 5.5em auto;
+            font-size: 0.8rem;
+            padding: 1.25em 0;
+            position: relative;
+            .username-details {
+                overflow: hidden;
+            }
+            .status-details {
+                cursor: pointer;
+                font-size: 0.7rem;                
+                .active {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.1em 0.1em 0.2em;
+                    border-radius: 1.5em;
+                    color: #39CD62;
+                    background-color: #39cd6333;
+                }
+                .inactive {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.1em 0.1em 0.2em;
+                    border-radius: 1.5em;
+                    color: #545F7D;
+                    background-color: #545f7d33;
+                }
+                .pending {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.1em 0.1em 0.2em;
+                    border-radius: 1.5em;
+                    color: #E9B200;
+                    background-color: #ebb40033;
+                }
+                .blacklisted {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0.1em 0.1em 0.2em;
+                    border-radius: 1.5em;
+                    color: #E4033B;
+                    background-color: #e2033b33;
+                }
+                &:hover .hide-options {
+                    display: flex;
+                }
+                &:focus-within .hide-options {
+                    display: flex;
+                }
+                .none {
+                    display: none;
+                }
+                .hide-options {
+                    position: absolute;
+                    font-size: 0.7rem;
+                    width: 11em;
+                    display: none;
+                    flex-direction: column;
+                    padding: 1em 0;
+                    top: 2em;
+                    flex-wrap: nowrap;
+                    overflow: visible;
+                    background-color: $background-primary;
+                    transform: translateX(-10%);
+                    z-index: 2;
+                    .status-clicks {
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.5em;
+                        padding: 1em;
+                        &:hover {
+                            background-color: #545f7d66;
+                            color: $background-primary;
+                        }
+                    }
+                }
+            }
+            .user-details-menu {
+                cursor: pointer;
+            }
+        }
+    }
+    .page-scroll {
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5em 0;
+        font-size: 0.875rem;
+        .page-scroll-show {
+            display: flex;
+            gap: 0.6em;
+            align-items: center;
+            .page-scroll-num {
+                display: flex;
+                gap: 1.1em;
+                background-color: $background-scroll;
+                border-radius: 4px;
+                padding: 0.4em 0.75em;
+            }
+        }
+        .page-scroll-page {
+            display: flex;   
+            gap: 1.25em;  
+            align-items: center;  
+            .angles {
+                background-color: $background-scroll;
+                padding: 0.1em;
+                cursor: pointer;
+            }
+            .page-numbers {
+                opacity: 0.6;
             }
         }
     }

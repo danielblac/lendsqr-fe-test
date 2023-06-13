@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps<{data: UsersProps[]}> = async () => 
   }
 }
 
-export default function Users({data}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function UsersThree({data}: InferGetStaticPropsType<typeof getStaticProps>) {
 
   function getStatus(lastDate: string) {
     const convertDate = lastDate.slice(0, 4)
@@ -107,7 +107,7 @@ export default function Users({data}: InferGetStaticPropsType<typeof getStaticPr
             </div>          
           </div>
           <div className='user-details-head'>
-            {data.slice(0, 15).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (
+            {data.slice(30, 45).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (
               <div key={id} className='user-details'>
                 <div className='organization-details'>Lendsqr</div>
                 <div className='username-details'>{userName.substring(0, 15)}</div>
@@ -140,7 +140,7 @@ export default function Users({data}: InferGetStaticPropsType<typeof getStaticPr
             <p>out of 100</p>
           </div>
           <div className='page-scroll-page'>
-            <ScrollLink href=''>
+            <ScrollLink href='/users/two'>
               <p className='angles'><FaAngleLeft /></p>
             </ScrollLink>
             <ScrollLink href='/users'>
@@ -159,7 +159,7 @@ export default function Users({data}: InferGetStaticPropsType<typeof getStaticPr
             <ScrollLink href='/users/seven'>
               <p className='page-numbers'>7</p>
             </ScrollLink>
-            <ScrollLink href='/users/two'>
+            <ScrollLink href='/users/six'>
               <p className='angles'><FaAngleRight /></p>
             </ScrollLink>
           </div>
@@ -169,7 +169,7 @@ export default function Users({data}: InferGetStaticPropsType<typeof getStaticPr
   )
 }
 
-Users.getLayout = function getLayout(page: ReactElement) {
+UsersThree.getLayout = function getLayout(page: ReactElement) {
     return (
         <Layout>
           {page}
