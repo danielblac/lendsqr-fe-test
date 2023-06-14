@@ -53,8 +53,7 @@ export default function UserDetails({data}: InferGetStaticPropsType<typeof getSt
       </Head>
       
       {data.map(({id, email, profile, userName, accountBalance, accountNumber, phoneNumber, education, socials, guarantor}: any) => (
-          <div className='user-page'>
-          
+          <div className='user-page' key={id}>          
             <div className='back'>
               <p className='link-back' onClick={() => router.back()}><HiArrowNarrowLeft /></p>
               <p>Back to Users</p>
