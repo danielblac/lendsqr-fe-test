@@ -18,7 +18,7 @@ export interface UserInterface {
     guarantor: {
         firstName: string,
         lastName: string,
-        poneNumber: string,
+        phoneNumber: string,
         gender: string,
         address: string,  
     },
@@ -31,7 +31,7 @@ export interface UserInterface {
     },
     education: {
         level: string,
-        employementStatus: string,
+        employmentStatus: string,
         sector: string,
         duration: string,
         officeEmail: string,
