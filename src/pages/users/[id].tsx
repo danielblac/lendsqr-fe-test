@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout from '@/components/Layout'
 import { UserInterface } from '@/components/UserInterface'
@@ -26,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -43,6 +44,7 @@ export const getStaticProps: GetStaticProps<{data: UserInterface}> = async ({par
 }
 
 export default function UserDetails({data: { id, email, profile, accountBalance, accountNumber, phoneNumber, education, socials, guarantor}}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -50,7 +52,7 @@ export default function UserDetails({data: { id, email, profile, accountBalance,
       </Head>
       <div className='user-page'>
         <div className='back'>
-          <p className='link-back' ><HiArrowNarrowLeft /></p>
+          <p className='link-back' onClick={() => router.back()}><HiArrowNarrowLeft /></p>
           <p>Back to Users</p>
         </div>
         <div className='user-page-header'>
