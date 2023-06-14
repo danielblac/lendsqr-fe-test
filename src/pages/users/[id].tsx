@@ -6,6 +6,7 @@ import { UserInterface } from '@/components/UserInterface'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import Image from 'next/image'
+import UserLink from '@/components/UserLink'
 import { loadPosts } from '@/lib/loadPosts'
 
 interface UsersProps {
@@ -35,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   const data = await loadPosts()
   const users = data as UsersProps[]
 
-  const userData = users.find((user: any) => id === user.id)
+  const userData = users.find((user: any) => id == user.id)
   return {
     props: {
       data: userData,
@@ -89,7 +90,15 @@ export default function UserDetails({data: { id, email, profile, userName, accou
               <p className='account-balance'>₦{accountBalance}</p>
               <p className='bank'>9912345678/Providous Bank</p>
             </div>
-          </div>          
+          </div>
+          <div className='user-details-link'>
+            <UserLink href={`/users/${id}`}>General Details</UserLink>
+            <UserLink href=''>Documents</UserLink>
+            <UserLink href=''>Bank Details</UserLink>
+            <UserLink href=''>Loans</UserLink>
+            <UserLink href=''>Savings</UserLink>
+            <UserLink href=''>App and System</UserLink>
+          </div>
         </div>
         <div className='user-details'>
           <div className='user-information'>
