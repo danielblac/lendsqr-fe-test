@@ -596,6 +596,55 @@ body {
                 cursor: pointer;
             }
         }
+        .user-filter-head {
+            display: grid;
+            grid-template-columns: 14.25em auto;
+            column-gap: 1em;
+            .filter-details {
+                padding: 1em 1.25em 1.25em;
+                border: 1px solid #545f7d24;
+                box-shadow: 3px 5px 20px #0000000a;
+                border-radius: 4px;
+                font-size: 0.875em;
+                .filters {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.4em;
+                    padding-bottom: 1.25em;
+                    input,
+                    select {
+                        opacity: 0.5;
+                        border: 1px solid #213F7D;
+                        border-radius: 8px;
+                        padding: 0.75em 1.25em;
+                    }
+                }
+                .buttons {
+                    display: flex;
+                    justify-content: space-around;
+                    padding-top: 0.6em;
+                    button {
+                        font-size: 0.875em;
+                        padding: 0.75em 1.875em;
+                        border: 1px solid #545F7D;
+                        border-radius: 8px;
+                        background-color: $background-primary;
+                        color: $color-body;
+                        cursor: pointer;
+                    }
+                    .filter {
+                        background-color: $background-secondary;
+                        color: $background-primary;
+                        border: none;
+                    }
+
+                }
+            }
+            .user-details {
+                display: grid;
+                grid-template-columns: 16.5em 10.5em 12em 5.5em auto;
+            }
+        }
     }
     .page-scroll {
         display: flex;
