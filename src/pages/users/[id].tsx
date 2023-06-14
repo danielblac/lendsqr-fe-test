@@ -68,7 +68,7 @@ export default function UserDetails({data: { id, email, profile, userName, accou
             <div className='user-profile'>
               <Image 
                 className='profile-photo'
-                src={profile.avatar}
+                src="/images/profile-photo.png"
                 alt='lendsqr-logo'
                 width={100}
                 height={100}
