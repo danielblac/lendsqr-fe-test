@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = users.map((user: any) => {
     return {
       params: {
-        id: user.id.toString()
+        id: user.id
       }
     }
   })
