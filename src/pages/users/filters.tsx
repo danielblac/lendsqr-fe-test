@@ -192,23 +192,23 @@ export default function UsersFilter({data}: InferGetStaticPropsType<typeof getSt
             <ScrollLink href=''>
               <p className='angles'><FaAngleLeft /></p>
             </ScrollLink>
-            <ScrollLink href='/users'>
+            <ScrollLink href='/users/filters'>
               <p className='page-numbers'>1</p>
             </ScrollLink>
-            <ScrollLink href='/users/two'>
+            <ScrollLink href=''>
               <p className='page-numbers'>2</p>
             </ScrollLink>
-            <ScrollLink href='/users/three'>
+            <ScrollLink href=''>
               <p className='page-numbers'>3</p>
             </ScrollLink>
             <p>...</p>
-            <ScrollLink href='/users/six'>
+            <ScrollLink href=''>
               <p className='page-numbers'>6</p>
             </ScrollLink>
-            <ScrollLink href='/users/seven'>
+            <ScrollLink href=''>
               <p className='page-numbers'>7</p>
             </ScrollLink>
-            <ScrollLink href='/users/two'>
+            <ScrollLink href=''>
               <p className='angles'><FaAngleRight /></p>
             </ScrollLink>
           </div>
