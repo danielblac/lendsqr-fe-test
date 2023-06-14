@@ -56,7 +56,7 @@ export default function UsersThree({data}: InferGetStaticPropsType<typeof getSta
         <title>Leadsqr | Users</title>
       </Head>
       <div className='users-page'>
-        <h3>Users</h3>
+        <h2>Users</h2>
         <div className='users-general-container'>
           <div className='users-general'>
             <div className='users-general-icon first'><HiOutlineUsers /></div>
@@ -80,54 +80,58 @@ export default function UsersThree({data}: InferGetStaticPropsType<typeof getSta
           </div>
         </div>
         <div className='users-details-container'>
-          <div className='users-details-head'>
-            <div className='users-details-header organization'>
-              <p>ORGANIZATION</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header username'>
-              <p className=''>USERNAME</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header email'>
-              <p className=''>EMAIL</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header phone-number'>
-              <p className=''>PHONE NUMBER</p>
-              <p className='filter'><BsFilter /></p>
-            </div >
-            <div className='users-details-header date-joined'>
-              <p className=''>DATE JOINED</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header status'>
-              <p className=''>STATUS</p>
-              <p className='filter'><BsFilter /></p>
-            </div>          
-          </div>
-          <div className='user-details-head'>
-            {data.slice(30, 45).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (
-              <div key={id} className='user-details'>
-                <div className='organization-details'>Lendsqr</div>
-                <div className='username-details'>{userName.substring(0, 15)}</div>
-                <div className='email-details'>{email}</div>
-                <div className='phone-number-details'>{`080${phoneNumber.replace(/[^0-9]/g, '').substring(0, 9)}`}</div>
-                <div className='date-joined-details'><Date dateString={createdAt} /></div>
-                <div className='status-details'>
-                  {getStatus(lastActiveDate)}
-                  <div className='hide-options'>
-                    <Link href='#' className="status-clicks">
-                      <p><FaRegEye /></p>
-                      <p>View Details</p>
-                    </Link>
-                    <Link href='#' className="status-clicks"><FaUserMinus />Blacklist User</Link>
-                    <Link href='#' className="status-clicks"><FaUserPlus />Activate User</Link>
-                  </div>
-                </div>
-                <div className='user-details-menu'><HiOutlineDotsVertical /></div>
+          <div>
+            <div className='users-details-head'>
+              <div className='users-details-header organization'>
+                <p>ORGANIZATION</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
               </div>
-            ))}
+              <div className='users-details-header username'>
+                <p className=''>USERNAME</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header email'>
+                <p className=''>EMAIL</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header phone-number'>
+                <p className=''>PHONE NUMBER</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div >
+              <div className='users-details-header date-joined'>
+                <p className=''>DATE JOINED</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header status'>
+                <p className=''>STATUS</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>          
+            </div>
+            <div className='user-details-head'>
+              {data.slice(30, 45).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (              
+                <div key={id} className='user-details'>
+                  <Link href={`/users/${id}`} className='user-details-link'>
+                    <div className='organization-details'>Lendsqr</div>
+                    <div className='username-details'>{userName.substring(0, 15)}</div>
+                    <div className='email-details'>{email}</div>
+                    <div className='phone-number-details'>{`080${phoneNumber.replace(/[^0-9]/g, '').substring(0, 9)}`}</div>
+                    <div className='date-joined-details'><Date dateString={createdAt} /></div>
+                  </Link>
+                  <div className='status-details'>
+                    {getStatus(lastActiveDate)}
+                    <div className='hide-options'>
+                      <Link href='#' className="status-clicks">
+                        <p><FaRegEye /></p>
+                        <p>View Details</p>
+                      </Link>
+                      <Link href='#' className="status-clicks"><FaUserMinus />Blacklist User</Link>
+                      <Link href='#' className="status-clicks"><FaUserPlus />Activate User</Link>
+                    </div>
+                  </div>
+                  <div className='user-details-menu'><HiOutlineDotsVertical /></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
         <div className='page-scroll'>

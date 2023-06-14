@@ -53,10 +53,10 @@ export default function UsersFilter({data}: InferGetStaticPropsType<typeof getSt
   return (
     <>
       <Head>
-        <title>Leadsqr | Users</title>
+        <title>Leadsqr | Filter</title>
       </Head>
       <div className='users-page'>
-        <h3>Users</h3>
+        <h2>Users</h2>
         <div className='users-general-container'>
           <div className='users-general'>
             <div className='users-general-icon first'><HiOutlineUsers /></div>
@@ -80,102 +80,106 @@ export default function UsersFilter({data}: InferGetStaticPropsType<typeof getSt
           </div>
         </div>
         <div className='users-details-container'>
-          <div className='users-details-head'>
-            <div className='users-details-header organization'>
-              <p>ORGANIZATION</p>
-              <p className='filter'><BsFilter /></p>
+          <div>
+            <div className='users-details-head'>
+              <div className='users-details-header organization'>
+                <p>ORGANIZATION</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header username'>
+                <p className=''>USERNAME</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header email'>
+                <p className=''>EMAIL</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header phone-number'>
+                <p className=''>PHONE NUMBER</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div >
+              <div className='users-details-header date-joined'>
+                <p className=''>DATE JOINED</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>
+              <div className='users-details-header status'>
+                <p className=''>STATUS</p>
+                <p className='filter'><Link href='/users/filters'><BsFilter /></Link></p>
+              </div>          
             </div>
-            <div className='users-details-header username'>
-              <p className=''>USERNAME</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header email'>
-              <p className=''>EMAIL</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header phone-number'>
-              <p className=''>PHONE NUMBER</p>
-              <p className='filter'><BsFilter /></p>
-            </div >
-            <div className='users-details-header date-joined'>
-              <p className=''>DATE JOINED</p>
-              <p className='filter'><BsFilter /></p>
-            </div>
-            <div className='users-details-header status'>
-              <p className=''>STATUS</p>
-              <p className='filter'><BsFilter /></p>
-            </div>          
-          </div>
-          <div className='user-filter-head'>
-            <div className='filter-details'>
-              <div className='filters'>
-                <label htmlFor="organization">Organization</label>
-                <select name="organization" id="orgainzation">
-                  <option value="">Select</option>
-                  <option value="lendsqr">Lendsqr</option>
-                  <option value="irorun">Irorun</option>
-                  <option value="lendstar">Lendstar</option>
-                </select> 
-              </div>
-              <div className='filters'>
-                <label htmlFor="userame">Username</label>
-                <input 
-                  type="text"
-                  id='username'
-                  placeholder='User'        
-                />  
-              </div>
-              <div className='filters'>
-                <label htmlFor="email">Email</label>
-                <input 
-                  type="email"
-                  id='email'
-                  placeholder='Email'       
-                />  
-              </div>
-              <div className='filters'>
-                <label htmlFor="date">Date</label>
-                <input 
-                  type="date"
-                  id='date'
-                  placeholder='Date'       
-                />  
-              </div>
-              <div className='filters'>
-                <label htmlFor="status">Status</label>
-                <select name="status" id="status">
-                  <option value="">Select</option>
-                  <option value="active">active</option>
-                  <option value="inactive">inactive</option>
-                  <option value="pending">pending</option>
-                  <option value="blacklisted">blacklisted</option>
-                </select> 
-              </div>
-              <div className='buttons'>
-                <button className='reset'>Reset</button>
-                <button className='filter'>Filter</button>
-              </div>
-            </div>
-            <div>
-              {data.slice(0, 10).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (
-                <div key={id} className='user-details'>
-                  <div className='email-details'>{email}</div>
-                  <div className='phone-number-details'>{`080${phoneNumber.replace(/[^0-9]/g, '').substring(0, 9)}`}</div>
-                  <div className='date-joined-details'><Date dateString={createdAt} /></div>
-                  <div className='status-details'>
-                    {getStatus(lastActiveDate)}
-                    <div className='hide-options'>
-                      <Link href='#' className="status-clicks">
-                        <p><FaRegEye /></p>
-                        <p>View Details</p>
-                      </Link>
-                      <Link href='#' className="status-clicks"><FaUserMinus />Blacklist User</Link>
-                      <Link href='#' className="status-clicks"><FaUserPlus />Activate User</Link>
-                    </div>
-                  </div>
-                  <div className='user-details-menu'><HiOutlineDotsVertical /></div>
+            <div className='user-filter-head'>
+              <div className='filter-details'>
+                <div className='filters'>
+                  <label htmlFor="organization">Organization</label>
+                  <select name="organization" id="orgainzation">
+                    <option value="">Select</option>
+                    <option value="lendsqr">Lendsqr</option>
+                    <option value="irorun">Irorun</option>
+                    <option value="lendstar">Lendstar</option>
+                  </select> 
                 </div>
-              ))}
+                <div className='filters'>
+                  <label htmlFor="userame">Username</label>
+                  <input 
+                    type="text"
+                    id='username'
+                    placeholder='User'        
+                  />  
+                </div>
+                <div className='filters'>
+                  <label htmlFor="email">Email</label>
+                  <input 
+                    type="email"
+                    id='email'
+                    placeholder='Email'       
+                  />  
+                </div>
+                <div className='filters'>
+                  <label htmlFor="date">Date</label>
+                  <input 
+                    type="date"
+                    id='date'
+                    placeholder='Date'       
+                  />  
+                </div>
+                <div className='filters'>
+                  <label htmlFor="status">Status</label>
+                  <select name="status" id="status">
+                    <option value="">Select</option>
+                    <option value="active">active</option>
+                    <option value="inactive">inactive</option>
+                    <option value="pending">pending</option>
+                    <option value="blacklisted">blacklisted</option>
+                  </select> 
+                </div>
+                <div className='buttons'>
+                  <button className='reset'>Reset</button>
+                  <button className='filter'>Filter</button>
+                </div>
+              </div>
+              <div>
+                {data.slice(0, 10).map(({id, userName, email, phoneNumber, createdAt, lastActiveDate}: any) => (
+                  <div key={id} className='user-details'>
+                    <Link href={`/users/${id}`} className='user-details-link'>
+                      <div className='email-details'>{email}</div>
+                      <div className='phone-number-details'>{`080${phoneNumber.replace(/[^0-9]/g, '').substring(0, 9)}`}</div>
+                      <div className='date-joined-details'><Date dateString={createdAt} /></div>
+                    </Link>
+                    <div className='status-details'>
+                      {getStatus(lastActiveDate)}
+                      <div className='hide-options'>
+                        <Link href='#' className="status-clicks">
+                          <p><FaRegEye /></p>
+                          <p>View Details</p>
+                        </Link>
+                        <Link href='#' className="status-clicks"><FaUserMinus />Blacklist User</Link>
+                        <Link href='#' className="status-clicks"><FaUserPlus />Activate User</Link>
+                      </div>
+                    </div>
+                    <div className='user-details-menu'><HiOutlineDotsVertical /></div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -7,16 +7,16 @@ export default function NotFound() {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push('/')
+      router.push('/users')
     }, 3000)
   }, [router])
 
   return (
-    <div className='text-center flex items-center flex-col my-16 h-full'>
-      <h1 className='font-bold text-2xl pb-3'>Ooooooops....</h1>
-      <h2 className='pb-3 text-xl'>That page cannot be found</h2>
+    <div className='no-page'>
+      <h1>Ooooooops....</h1>
+      <h2>That page cannot be found</h2>
       <p>
-        Go back to <Link className='text-btn underline' href='/users'>Users</Link>
+        Go back to <Link href='/users'>Users</Link>
       </p>
     </div>
   )

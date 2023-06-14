@@ -1,16 +1,7 @@
-// COLORS
-$color-header: #213F7D;
-$color-body: #545F7D;
-$color-active: #05122b;
-$color-body-faded: hsla(224, 20%, 41%, 0.3);
-
-$background-primary: #FFF;
-$background-user-page: #E5E5E5;
-$background-active: #39cdcd33;
-$background-secondary: #39CDCC;
-$background-scroll: #213f7d1a;
-
 //  FONTS
+
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
 @font-face {
     font-family: 'Avenir Next';
     src: url('/fonts/avenir-next.ttf') format('truetype');
@@ -21,6 +12,20 @@ $background-scroll: #213f7d1a;
     src: url('/fonts/AvenirNextLTPro-Bold.otf') format('truetype');
     font-weight: bold;
 }
+
+// COLORS
+$color-header: #213F7D;
+$color-body: #545F7D;
+$color-active: #05122b;
+$color-body-faded: #545f7db3;
+$color-border-faded: #545f7d33;
+
+$background-primary: #FFF;
+$background-user-page: #E5E5E5;
+$background-active: #38cccc33;
+$background-active-two: #37cdcd0d;
+$background-secondary: #39CDCC;
+$background-scroll: #213f7d1a;
 
 // MEDIA QUERY MANAGEMENT BREAKPOINTS
 
@@ -69,6 +74,44 @@ body {
     font-family: 'Avenir Next' !important;
     background: $background-primary;
     color: $color-body;
+}
+
+// ACTIVE LINK
+
+.active-link {
+    background-color: $background-active;
+    color: $color-active;
+    border-left: 4px solid $background-secondary;
+}
+
+.active-page {
+    color: $color-active;
+}
+
+.active-user-link {
+    background-color: $background-active-two;
+    color: $background-secondary;
+    border-bottom: 2px solid $background-secondary;
+}
+
+// 404 PAGE
+
+.no-page {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 4rem 0;
+    align-items: center;
+    text-align: center;
+    h1, h2 {
+        padding-bottom: 0.75em;
+    }
+    p {
+        font-size: 1.25rem;
+        a {
+            text-decoration: underline;
+        }
+    }
 }
 
 // LOGIN PAGE
@@ -253,22 +296,11 @@ body {
     }
 }
 
-// ACTIVE LINK
-
-.active-link {
-    background-color: $background-active;
-    color: $color-active;
-    border-left: 4px solid $background-secondary;
-}
-
-.active-page {
-    color: $color-active;
-}
-
 // DASHBOARD/GENERAL DETAILS LAYOUT
 
 .users-layout {    
     background-color: $background-user-page;
+    font-family: 'Work Sans', sans-serif;
     .main {
         display: grid;
         grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -401,7 +433,7 @@ body {
     .switch {
         display: flex;
         gap: 0.6em;
-        padding: 0 0em 3em 1.8em;
+        padding: 0 0 3em 1.5em;
         .down-arrow {
             padding-top: 0.15em;
             cursor: pointer;
@@ -412,7 +444,7 @@ body {
         display: flex;
         align-items: flex-start;
         gap: 0.6em;
-        padding-left: 1.85em;
+        padding-left: 1.5em;
         padding-bottom: 2.5em;
     }
     .products {
@@ -425,11 +457,11 @@ body {
         }
         .product-header {
             font-size: 0.75rem;
-            padding-left: 2.5em;
+            padding-left: 2em;
         }
         a {
             opacity: 0.6;
-            padding: 0.6em 3em 0.6em 1.8em;
+            padding: 0.6em 3em 0.6em 1.5em;
             p {
                 display: flex;
                 align-items: flex-start;
@@ -444,7 +476,7 @@ body {
 .users-page {
     background-color: $background-user-page;
     grid-column: span 4 / span 4;
-    padding: 3.75em;
+    padding: 3.75em 2.5em 3.75em 3em;
     .users-general-container {
         padding: 2.5em 0;
         display: grid;
@@ -491,10 +523,14 @@ body {
     }
     .users-details-container {
         background-color: $background-primary;
-        padding: 1.8em 0 1.8em 1.8em;
+        padding: 1.8em 0 1.8em 4em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         .users-details-head {
             display: grid;
-            grid-template-columns: 8em 7.1em 13.2em 8.4em 9.7em auto;
+            grid-template-columns: 8em 7.1em 13.5em 8.4em 10em 10em;
             padding-bottom: 1em;
             p {
                 font-size: 0.72rem;
@@ -512,21 +548,29 @@ body {
         }
         .user-details {
             display: grid;
-            grid-template-columns: 10.2em 8.8em 16.5em 10.5em 12em 5.5em auto;
+            grid-template-columns: 58.7em 6.5em auto;
             font-size: 0.8rem;
             padding: 1.25em 0;
-            position: relative;
+            position: relative;            
+            .user-details-link {
+                display: grid;
+                grid-template-columns: 10.1em 8.8em 17em 10.5em 11.5em;
+                &:hover {
+                    color: $color-body-faded;
+                }
+            }
             .username-details {
                 overflow: hidden;
             }
             .status-details {
                 cursor: pointer;
-                font-size: 0.7rem;                
+                font-size: 0.7rem;  
+                margin-right: auto;              
                 .active {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0.1em 0.1em 0.2em;
+                    padding: 0.2em 1em 0.4em;
                     border-radius: 1.5em;
                     color: #39CD62;
                     background-color: #39cd6333;
@@ -535,7 +579,7 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0.1em 0.1em 0.2em;
+                    padding: 0.2em 1em 0.4em;
                     border-radius: 1.5em;
                     color: #545F7D;
                     background-color: #545f7d33;
@@ -544,7 +588,7 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0.1em 0.1em 0.2em;
+                    padding: 0.2em 1em 0.4em;
                     border-radius: 1.5em;
                     color: #E9B200;
                     background-color: #ebb40033;
@@ -553,7 +597,7 @@ body {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    padding: 0.1em 0.1em 0.2em;
+                    padding: 0.2em 1em 0.4em;
                     border-radius: 1.5em;
                     color: #E4033B;
                     background-color: #e2033b33;
@@ -598,7 +642,7 @@ body {
         }
         .user-filter-head {
             display: grid;
-            grid-template-columns: 14.25em auto;
+            grid-template-columns: 14em auto;
             column-gap: 1em;
             .filter-details {
                 padding: 1em 1.25em 1.25em;
@@ -642,7 +686,11 @@ body {
             }
             .user-details {
                 display: grid;
-                grid-template-columns: 16.5em 10.5em 12em 5.5em auto;
+                grid-template-columns: 40em 6.5em auto;
+                .user-details-link {
+                    display: grid;
+                    grid-template-columns: 17em 10.5em 11.5em;
+                }
             }
         }
     }
@@ -674,6 +722,136 @@ body {
             }
             .page-numbers {
                 opacity: 0.6;
+            }
+        }
+    }
+}
+
+// USER - GENERAL DETAILS PAGE
+
+.user-page {
+    background-color: $background-user-page;
+    grid-column: span 4 / span 4;
+    padding: 3.75em 2.5em 3.75em 3em;
+    .back {
+        display: flex;
+        gap: 0.8em;
+        margin-bottom: 2em;
+        .link-back {
+            cursor: pointer;
+        }
+    }
+    .user-page-header {
+        margin-bottom: 2.8em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            margin-left: 1.25em;
+            width: 13em;
+            padding: 0.75em 1em;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            border-radius: 8px;   
+            cursor: pointer;         
+            background-color: $background-user-page;
+            color: #E4033B;
+            border: 1px solid #E4033B
+        }
+        .activate-button {
+            color: #39CDCC;
+            border: 1px solid #39CDCC
+        }
+    }
+    .user-general-container {
+        background-color: $background-primary;
+        padding: 1.85em 1.85em 0 1.85em;
+        .user-general {
+            display: flex;
+            margin-bottom: 3em;
+            .user-profile {
+                display: flex;
+                gap: 1.25em;
+                img {
+                    border-radius: 50%;
+                }
+                .user-profile-name {
+                    margin-top: 1.35em;
+                    .profile-name {
+                        font-size: 1.35rem;
+                        font-weight: 500;                        
+                        padding-bottom: 0.5em;
+                    }
+                    .account-number {
+                        font-size: 0.85em;
+                    }
+                }
+            }
+            .user-tier {
+                margin: 0 1.25em;
+                padding: 1.25em 1.85em;
+                border-left: 1px solid $color-border-faded;
+                border-right: 1px solid $color-border-faded;
+                .user-th {
+                    font-weight: 500;
+                    font-size: 0.85rem;
+                }
+                .rating {
+                    display: flex;
+                    align-items: center;
+                    font-size: 1.25rem;
+                    .filled-star {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+            .account-details {
+                margin-top: 1em;
+                .account-balance {
+                    font-size: 1.35rem;
+                    font-weight: 500;                        
+                    padding-bottom: 0.5em;
+                }
+                .bank {
+                    font-size: 0.75rem;
+                }
+            }
+        }
+        .user-details-link {
+            display: flex;
+            justify-content: space-between;
+            a {
+                padding: 0 1em 0.6em;
+            }
+        }
+    }
+    .user-details {
+        background-color: $background-primary;
+        padding: 1.8em 0 1.8em 1.8em;
+        margin-top: 1.85em;
+        .user-information {
+            padding-bottom: 3.5em;
+            .user-information-header {
+                font-weight: 500;
+                padding-bottom: 1.8em;
+            }
+            .information {
+                display: grid;
+                grid-template-columns: max-content max-content max-content max-content;
+                column-gap: 4.5em;
+                row-gap: 1.8em;
+                .information-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5em;
+                    .information-header {
+                        font-size: 0.75rem;
+                    }
+                }
+            }
+            .education {
+                column-gap: 3em;
             }
         }
     }
