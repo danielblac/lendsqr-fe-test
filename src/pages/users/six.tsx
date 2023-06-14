@@ -11,14 +11,14 @@ import { UserInterface } from '@/components/UserInterface'
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Date from '@/components/Date'
 import ScrollLink from '@/components/ScrollLink'
+import { loadPosts } from '@/lib/loadPosts'
 
 interface UsersProps {
   data: UserInterface,
 }
 
 export const getStaticProps: GetStaticProps<{data: UsersProps[]}> = async () => {
-  const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users')
-  const data = await res.json()
+  const data = await loadPosts()
   const users = data as UsersProps[]
   return {
     props: {
