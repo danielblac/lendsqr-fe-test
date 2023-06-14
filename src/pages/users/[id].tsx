@@ -4,18 +4,17 @@ import Head from 'next/head'
 import Layout from '@/components/Layout'
 import { UserInterface } from '@/components/UserInterface'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import Date from '@/components/Date'
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import Image from 'next/image'
 import UserLink from '@/components/UserLink'
+import { loadPosts } from '@/lib/loadPosts'
 
 interface UsersProps {
   data: UserInterface,
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users')
-  const data = await res.json()
+  const data = await loadPosts()
   const users = data as UsersProps[]
 
   const paths = users.map((user: any) => {
@@ -34,8 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const id = params?.id
-  const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users')
-  const data = await res.json()
+  const data = await loadPosts()
   const users = data as UsersProps[]
 
   const userData = users.find((user: any) => id === user.id)
@@ -95,11 +93,11 @@ export default function UserDetails({data: { id, email, profile, userName, accou
           </div>
           <div className='user-details-link'>
             <UserLink href={`/users/${id}`}>General Details</UserLink>
-            <UserLink href='#'>Documents</UserLink>
-            <UserLink href='#'>Bank Details</UserLink>
-            <UserLink href='#'>Loans</UserLink>
-            <UserLink href='#'>Savings</UserLink>
-            <UserLink href='#'>App and System</UserLink>
+            <UserLink href=''>Documents</UserLink>
+            <UserLink href=''>Bank Details</UserLink>
+            <UserLink href=''>Loans</UserLink>
+            <UserLink href=''>Savings</UserLink>
+            <UserLink href=''>App and System</UserLink>
           </div>
         </div>
         <div className='user-details'>
