@@ -1,13 +1,7 @@
+import axios from "axios";
+
 export async function loadPosts() {
-    const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users')
-    const data = await res.json()
+  const data = import('/data/data.json')
 
-    return data
-}
-
-export async function loadPaths() {
-    const res = await fetch('https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users')
-    const data = await res.json()
-
-    return data
+  return data
 }

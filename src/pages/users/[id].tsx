@@ -1,5 +1,4 @@
 import { ReactElement } from 'react'
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Layout from '@/components/Layout'
 import { UserInterface } from '@/components/UserInterface'
@@ -8,6 +7,7 @@ import { HiArrowNarrowLeft } from 'react-icons/hi'
 import Image from 'next/image'
 import UserLink from '@/components/UserLink'
 import { loadPosts } from '@/lib/loadPosts'
+import axios from "axios";
 
 interface UsersProps {
   data: UserInterface,
@@ -27,24 +27,30 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   }
 }
 
-export const getStaticProps: GetStaticProps<{data: UserInterface}> = async ({params}) => {
+export const getStaticProps: GetStaticProps = async ({params}) => {
   const id = params?.id
-  const res = await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`)
-  const data = await res.json()
+  const data = await loadPosts()
+  const users = data as UsersProps[]
+
+  const userData = users.find((user: any) => id === user.id)
 
   return {
     props: {
-      data: data,
+      data: userData,
     }
   }
 }
 
 export default function UserDetails({data: { id, email, profile, accountBalance, accountNumber, phoneNumber, education, socials, guarantor}}: InferGetStaticPropsType<typeof getStaticProps>) {
+<<<<<<< HEAD
   const router = useRouter()
+  
+=======
+>>>>>>> parent of ab108e1 (Update [id].tsx)
   return (
     <>
       <Head>
@@ -52,7 +58,7 @@ export default function UserDetails({data: { id, email, profile, accountBalance,
       </Head>
       <div className='user-page'>
         <div className='back'>
-          <p className='link-back' onClick={() => router.back()}><HiArrowNarrowLeft /></p>
+          <p className='link-back' ><HiArrowNarrowLeft /></p>
           <p>Back to Users</p>
         </div>
         <div className='user-page-header'>
