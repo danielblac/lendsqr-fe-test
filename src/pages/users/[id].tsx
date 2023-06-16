@@ -10,9 +10,8 @@ import { loadPosts, loadPaths } from '@/lib/loadPosts'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await loadPosts()
-  const users = JSON.parse(data)
 
-  const paths = users.map((user: any) => {
+  const paths = data.map((user: any) => {
     return {
       params: {
         id: user.id
@@ -29,11 +28,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const id = params?.id
   const data = await loadPaths(id)
-  const user = JSON.parse(data)
 
   return {
     props: {
-      data: user,
+      data,
     }
   }
 }

@@ -19,10 +19,9 @@ interface UsersProps {
 
 export const getStaticProps: GetStaticProps<{data: UsersProps[]}> = async () => {
   const data = await loadPosts()
-  const users = JSON.parse(data)
   return {
     props: {
-      data: users,
+      data,
     }
   }
 }
