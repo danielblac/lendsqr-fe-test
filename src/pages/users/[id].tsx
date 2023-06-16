@@ -1,13 +1,13 @@
 import { ReactElement } from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
 import { UserInterface } from '@/components/UserInterface'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import Image from 'next/image'
 import UserLink from '@/components/UserLink'
-import { loadPosts } from '@/lib/loadPosts'
-import axios from "axios";
+import { loadPosts, loadPaths } from '@/lib/loadPosts'
 
 interface UsersProps {
   data: UserInterface,
@@ -15,7 +15,7 @@ interface UsersProps {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await loadPosts()
-  const users = data as UsersProps[]
+  const users = JSON.parse(data)
 
   const paths = users.map((user: any) => {
     return {
@@ -31,26 +31,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({params}) => {
+export const getStaticProps: GetStaticProps<{data: UserInterface}> = async ({params}) => {
   const id = params?.id
-  const data = await loadPosts()
-  const users = data as UsersProps[]
-
-  const userData = users.find((user: any) => id === user.id)
+  const data = await loadPaths(id)
+  const user = JSON.parse(data)
 
   return {
     props: {
-      data: userData,
+      data: user,
     }
   }
 }
 
 export default function UserDetails({data: { id, email, profile, accountBalance, accountNumber, phoneNumber, education, socials, guarantor}}: InferGetStaticPropsType<typeof getStaticProps>) {
-<<<<<<< HEAD
   const router = useRouter()
-  
-=======
->>>>>>> parent of ab108e1 (Update [id].tsx)
   return (
     <>
       <Head>
@@ -58,7 +52,7 @@ export default function UserDetails({data: { id, email, profile, accountBalance,
       </Head>
       <div className='user-page'>
         <div className='back'>
-          <p className='link-back' ><HiArrowNarrowLeft /></p>
+          <p className='link-back' onClick={() => router.back()} ><HiArrowNarrowLeft /></p>
           <p>Back to Users</p>
         </div>
         <div className='user-page-header'>

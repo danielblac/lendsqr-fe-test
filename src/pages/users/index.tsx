@@ -19,7 +19,7 @@ interface UsersProps {
 
 export const getStaticProps: GetStaticProps<{data: UsersProps[]}> = async () => {
   const data = await loadPosts()
-  const users = data as UsersProps[]
+  const users = JSON.parse(data)
   return {
     props: {
       data: users,
@@ -28,7 +28,6 @@ export const getStaticProps: GetStaticProps<{data: UsersProps[]}> = async () => 
 }
 
 export default function Users({data}: InferGetStaticPropsType<typeof getStaticProps>) {
-
   function getStatus(lastDate: string) {
     const convertDate = lastDate.slice(0, 4)
     if (+convertDate > 2050) {
