@@ -2,16 +2,11 @@ import { ReactElement } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
-import { UserInterface } from '@/components/UserInterface'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
 import { HiArrowNarrowLeft } from 'react-icons/hi'
 import Image from 'next/image'
 import UserLink from '@/components/UserLink'
-import { loadPosts } from '@/lib/loadPosts'
-
-interface UsersProps {
-  data: UserInterface,
-}
+import { loadPosts, loadPaths } from '@/lib/loadPosts'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await loadPosts()
@@ -33,12 +28,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
   const id = params?.id
-  const res = await fetch(`https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/users/${id}`)
-  const data = await res.json()
+  const data = await loadPaths(id)
+  const user = JSON.parse(data)
 
   return {
     props: {
-      data: data,
+      data: user,
     }
   }
 }
