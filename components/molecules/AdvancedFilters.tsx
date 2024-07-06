@@ -21,7 +21,7 @@ export default function AdvancedFilters() {
           labelId="demo-simple-select-label"
           displayEmpty
           sx={{
-            "& .MuiInputBase-input": {
+            "& .MuiInputBase-input": { 
               height: "34px",
               padding: "0.7em 0 0 14px",
               fontSize: "0.85rem",

@@ -187,7 +187,7 @@ export default function Sidebar() {
         onOpen={() => dispatch(setMobileSidebar())}
       >
         <aside className={sidebar ? "mobile-sidebar" : "mobile-sidebar-off"}>
-          <div className="logo">
+          <div className="logo" onClick={() => router.push("/")}>
             <Image
               src="/images/logo.png"
               alt="lendsqr-logo"

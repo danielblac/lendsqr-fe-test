@@ -46,7 +46,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <div className="logo">
+      <div className="logo" onClick={() => router.push("/")}>
         <Image
           src="/images/logo.png"
           alt="lendsqr-logo"
